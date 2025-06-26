@@ -1,1 +1,4 @@
 *.env
+*debug_bin*
+cmd/db
+.vscode
