@@ -1,0 +1,160 @@
+basePath: /
+definitions:
+  internal.AnyJSON:
+    additionalProperties: true
+    type: object
+host: localhost:1010
+info:
+  contact: {}
+  description: This is a sample API for managing items.
+  title: My API
+  version: "1.0"
+paths:
+  /items:
+    get:
+      description: Retrieves a list of all item keys stored in the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Returns list of keys and a success message
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Cannot list items error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: List all item keys
+      tags:
+      - database
+    post:
+      consumes:
+      - application/json
+      description: Creates a new item with a generated UUID and stores the request
+        body in the database
+      parameters:
+      - description: Any JSON object
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/internal.AnyJSON'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Returns the ID and success message
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Cannot read body error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Cannot put item error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create a new item
+      tags:
+      - database
+  /items/{key}:
+    delete:
+      description: Deletes an item from the database using the given key
+      parameters:
+      - description: Item Key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Item deleted successfully
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Item not found error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete item by key
+      tags:
+      - database
+    get:
+      description: Retrieves an item from the database using the given key
+      parameters:
+      - description: Item Key
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Returns the item with its ID
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Item not found error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get item by key
+      tags:
+      - database
+    put:
+      consumes:
+      - application/octet-stream
+      description: Updates the value of an item by its key
+      parameters:
+      - description: Item Key
+        in: path
+        name: key
+        required: true
+        type: string
+      - description: Any JSON object
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/internal.AnyJSON'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Update an item
+      tags:
+      - database
+swagger: "2.0"
