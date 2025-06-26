@@ -7,7 +7,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func (s *Server) Put(c *gin.Context) {
+func (s *Server) PutItem(c *gin.Context) {
 
 	newUUID := uuid.New()
 

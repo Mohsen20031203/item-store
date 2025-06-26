@@ -2,7 +2,7 @@ package internal
 
 import "github.com/gin-gonic/gin"
 
-func (s *Server) Get(c *gin.Context) {
+func (s *Server) GetItem(c *gin.Context) {
 	key := c.Param("key")
 	item, err := s.DB.Get(key)
 	if err != nil {

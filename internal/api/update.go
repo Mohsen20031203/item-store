@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (s *Server) Update(c *gin.Context) {
+func (s *Server) UpdateItem(c *gin.Context) {
 
 	key := c.Param("key")
 

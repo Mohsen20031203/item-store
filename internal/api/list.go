@@ -2,7 +2,7 @@ package internal
 
 import "github.com/gin-gonic/gin"
 
-func (s *Server) List(c *gin.Context) {
+func (s *Server) ListItem(c *gin.Context) {
 
 	keys, err := s.DB.List()
 	if err != nil {

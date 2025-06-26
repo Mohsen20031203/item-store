@@ -52,11 +52,11 @@ func (server *Server) setupRouter() {
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(utils.HTTPLogger())
 
-	router.GET("/:key", server.Get)
-	router.GET("/list", server.List)
-	router.POST("/put", server.Put)
+	router.GET("/:key", server.GetItem)
+	router.GET("/list", server.ListItem)
+	router.POST("/put", server.PutItem)
 	router.DELETE("/:key", server.DeleteItem)
-	router.PUT("/:key", server.Update)
+	router.PUT("/:key", server.UpdateItem)
 
 	// swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
