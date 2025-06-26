@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"encoding/json"
 	"io"
 
 	"github.com/gin-gonic/gin"
@@ -32,6 +33,11 @@ func (s *Server) CreateItem(c *gin.Context) {
 
 	if len(bodyBytes) == 0 {
 		c.JSON(400, gin.H{"error": "Body cannot be empty"})
+		return
+	}
+	var in interface{}
+	if err := json.Unmarshal(bodyBytes, &in); err != nil {
+		c.JSON(400, gin.H{"error": "Invalid JSON format"})
 		return
 	}
 

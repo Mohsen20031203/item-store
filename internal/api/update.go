@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"encoding/json"
 	"io"
 
 	"github.com/gin-gonic/gin"
@@ -36,6 +37,11 @@ func (s *Server) UpdateItem(c *gin.Context) {
 	bodyBytes, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(400, gin.H{"error": "Cannot read body"})
+		return
+	}
+	var inf interface{}
+	if err := json.Unmarshal(bodyBytes, &inf); err != nil {
+		c.JSON(400, gin.H{"error": "Invalid JSON format"})
 		return
 	}
 
