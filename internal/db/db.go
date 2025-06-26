@@ -5,6 +5,6 @@ type Client interface {
 	Put(key string, value []byte) error
 	Delete(key string) error
 	Update(map[string][]byte) error
-	GetAll() (map[string][]byte, error)
+	List() (map[string][]byte, error)
 	Close() error
 }

@@ -67,7 +67,7 @@ func (l *LvlDB) Close() error {
 	return nil
 }
 
-func (l *LvlDB) GetAll() (map[string][]byte, error) {
+func (l *LvlDB) List() (map[string][]byte, error) {
 	iter := l.DB.NewIterator(nil, nil)
 	defer iter.Release()
 
