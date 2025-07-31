@@ -37,6 +37,7 @@ func (s *Server) CreateItem(c *gin.Context) {
 		c.JSON(400, gin.H{"error": "Body cannot be empty"})
 		return
 	}
+	// Unmarshal the body to check if it's a valid JSON
 	var in interface{}
 	if err := json.Unmarshal(bodyBytes, &in); err != nil {
 		c.JSON(400, gin.H{"error": "Invalid JSON format"})
