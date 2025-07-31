@@ -23,6 +23,7 @@ type AnyJSON map[string]interface{}
 // @Router       /items [post]
 func (s *Server) CreateItem(c *gin.Context) {
 
+	// Generate a new UUID for the item
 	newUUID := uuid.New()
 
 	bodyBytes, err := io.ReadAll(c.Request.Body)
