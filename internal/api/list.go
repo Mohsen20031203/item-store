@@ -16,16 +16,19 @@ import (
 // @Router       /items [get]
 func (s *Server) ListItem(c *gin.Context) {
 
+	// List all items in the database
 	kvs, err := s.DB.List()
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Cannot list items"})
 		return
 	}
 
+	// Create a map to hold the results
 	result := make(map[string]interface{})
 	for key, value := range kvs {
 		//unmarshal value to interface{}
 
+		// Check if value is empty
 		var inf interface{}
 		if err := json.Unmarshal(value, &inf); err != nil {
 			c.JSON(500, gin.H{"error": "Cannot unmarshal item value"})
@@ -33,6 +36,6 @@ func (s *Server) ListItem(c *gin.Context) {
 		}
 		result[key] = inf
 	}
-
+	// Return the result as JSON
 	c.JSON(200, result)
 }
