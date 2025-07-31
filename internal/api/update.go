@@ -21,30 +21,36 @@ import (
 // @Router       /items/{key} [put]
 func (s *Server) UpdateItem(c *gin.Context) {
 
+	// Get the key from the URL parameter
 	key := c.Param("key")
 
+	// Check if item exists
 	_, err := s.DB.Get(key)
 	if err != nil {
 		c.JSON(404, gin.H{"error": "Item not found"})
 		return
 	}
 
+	// Check if key is empty
 	if key == "" {
 		c.JSON(400, gin.H{"error": "Key cannot be empty"})
 		return
 	}
 
+	// Read the request body
 	bodyBytes, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(400, gin.H{"error": "Cannot read body"})
 		return
 	}
+	// Check if body is empty
 	var inf interface{}
 	if err := json.Unmarshal(bodyBytes, &inf); err != nil {
 		c.JSON(400, gin.H{"error": "Invalid JSON format"})
 		return
 	}
 
+	// Check if body is empty
 	err = s.DB.Put(key, bodyBytes)
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Cannot put item"})
