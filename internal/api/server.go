@@ -13,12 +13,14 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// Server represents the HTTP server for the item store application.
 type Server struct {
 	config config.Config
 	DB     db.Client
 	router *gin.Engine
 }
 
+// NewServer initializes a new Server instance with the provided configuration.
 func NewServer(cfg config.Config) (*Server, error) {
 
 	db, err := lvl.NewDB(cfg.LvlConfig.Path)
