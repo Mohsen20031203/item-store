@@ -50,5 +50,6 @@ func (s *Server) CreateItem(c *gin.Context) {
 		c.JSON(500, gin.H{"error": "Cannot put item"})
 		return
 	}
+	// Return the new UUID and a success message
 	c.JSON(200, gin.H{"id": newUUID.String(), "message": "Item created successfully"})
 }
