@@ -30,6 +30,7 @@ func HTTPLogger() gin.HandlerFunc {
 			logger = log.Error().Bytes("body", rec.Body)
 		}
 
+		// log the request details
 		logger.Str("protocol", "http").
 			Str("method", c.Request.Method).
 			Str("path", c.Request.RequestURI).
