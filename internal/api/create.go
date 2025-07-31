@@ -44,6 +44,7 @@ func (s *Server) CreateItem(c *gin.Context) {
 		return
 	}
 
+	// Store the item in the database with the generated UUID
 	err = s.DB.Put(newUUID.String(), bodyBytes)
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Cannot put item"})
