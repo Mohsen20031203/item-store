@@ -23,7 +23,7 @@ func (s *Server) GetItem(c *gin.Context) {
 		c.JSON(400, gin.H{"error": "Key cannot be empty"})
 		return
 	}
-	// Retrieve the item from the database
+
 	item, err := s.DB.Get(key)
 	if err != nil {
 		c.JSON(404, gin.H{"error": "Item not found"})
