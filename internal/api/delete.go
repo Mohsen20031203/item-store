@@ -18,7 +18,6 @@ func (s *Server) DeleteItem(c *gin.Context) {
 		return
 	}
 
-	// Check if item exists
 	err := s.DB.Delete(key)
 	if err != nil {
 		c.JSON(404, gin.H{"error": "Item not found"})
