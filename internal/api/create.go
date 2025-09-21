@@ -32,7 +32,6 @@ func (s *Server) CreateItem(c *gin.Context) {
 		return
 	}
 
-	// Check if the body is empty
 	if len(bodyBytes) == 0 {
 		c.JSON(400, gin.H{"error": "Body cannot be empty"})
 		return
