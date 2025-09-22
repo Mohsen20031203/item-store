@@ -31,7 +31,6 @@ func (s *Server) UpdateItem(c *gin.Context) {
 		return
 	}
 
-	// Check if key is empty
 	if key == "" {
 		c.JSON(400, gin.H{"error": "Key cannot be empty"})
 		return
