@@ -16,7 +16,6 @@ import (
 // @Router       /items [get]
 func (s *Server) ListItem(c *gin.Context) {
 
-	// List all items in the database
 	kvs, err := s.DB.List()
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Cannot list items"})
