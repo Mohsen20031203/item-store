@@ -13,7 +13,6 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// Server represents the HTTP server for the item store application.
 type Server struct {
 	config config.Config
 	DB     db.Client
