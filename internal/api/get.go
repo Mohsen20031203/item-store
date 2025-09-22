@@ -35,6 +35,6 @@ func (s *Server) GetItem(c *gin.Context) {
 		c.JSON(500, gin.H{"error": "Cannot unmarshal item value"})
 		return
 	}
-	// Return the item as JSON
+
 	c.JSON(200, inf)
 }
