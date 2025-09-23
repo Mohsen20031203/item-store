@@ -24,7 +24,6 @@ func (s *Server) UpdateItem(c *gin.Context) {
 	// Get the key from the URL parameter
 	key := c.Param("key")
 
-	// Check if item exists
 	_, err := s.DB.Get(key)
 	if err != nil {
 		c.JSON(404, gin.H{"error": "Item not found"})
