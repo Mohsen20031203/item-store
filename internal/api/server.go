@@ -59,7 +59,7 @@ func (server *Server) setupRouter() {
 	router.DELETE("/items/:key", server.DeleteItem)
 	router.PUT("/items/:key", server.UpdateItem)
 
-	// swagger
+	// Swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	server.router = router
