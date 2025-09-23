@@ -21,7 +21,6 @@ import (
 // @Router       /items/{key} [put]
 func (s *Server) UpdateItem(c *gin.Context) {
 
-	// Get the key from the URL parameter
 	key := c.Param("key")
 
 	_, err := s.DB.Get(key)
