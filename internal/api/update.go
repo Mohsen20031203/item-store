@@ -39,7 +39,6 @@ func (s *Server) UpdateItem(c *gin.Context) {
 		c.JSON(400, gin.H{"error": "Cannot read body"})
 		return
 	}
-	// Check if body is empty
 	var inf interface{}
 	if err := json.Unmarshal(bodyBytes, &inf); err != nil {
 		c.JSON(400, gin.H{"error": "Invalid JSON format"})
