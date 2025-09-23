@@ -45,7 +45,6 @@ func (s *Server) UpdateItem(c *gin.Context) {
 		return
 	}
 
-	// Check if body is empty
 	err = s.DB.Put(key, bodyBytes)
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Cannot put item"})
