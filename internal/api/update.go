@@ -34,7 +34,6 @@ func (s *Server) UpdateItem(c *gin.Context) {
 		return
 	}
 
-	// Read the request body
 	bodyBytes, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(400, gin.H{"error": "Cannot read body"})
