@@ -13,6 +13,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// Server represents the API server.
 type Server struct {
 	config config.Config
 	DB     db.Client
