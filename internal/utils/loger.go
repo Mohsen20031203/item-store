@@ -8,6 +8,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+// ResponseRecorder is a custom ResponseWriter that captures the status code and response body.
 type ResponseRecorder struct {
 	gin.ResponseWriter
 	StatusCode int
