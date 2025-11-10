@@ -38,6 +38,7 @@ func NewServer(cfg config.Config) (*Server, error) {
 
 }
 
+// setupRouter configures the Gin router with routes and middleware.
 func (server *Server) setupRouter() {
 	router := gin.Default()
 	router.Use(gin.Recovery())
