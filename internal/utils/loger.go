@@ -15,6 +15,7 @@ type ResponseRecorder struct {
 	Body       []byte
 }
 
+// WriteHeader captures the status code.
 func HTTPLogger() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		startTime := time.Now()
