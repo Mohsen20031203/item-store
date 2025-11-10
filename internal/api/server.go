@@ -67,6 +67,7 @@ func (server *Server) setupRouter() {
 	server.router = router
 }
 
+// Start runs the server on the specified address.
 func (server *Server) Start(address string) error {
 	return server.router.Run(address)
 }
